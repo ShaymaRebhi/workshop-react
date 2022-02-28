@@ -7,7 +7,7 @@ GET
 * @param {boolean} transformBody whether to transform the request body from JSON
 to FormData | Default false
 */
-export async function queryApi(
+export async function queryApi (
 endpoint,
 body = null,
 method = "GET",
@@ -32,7 +32,9 @@ data: body,
 };
 if (["POST", "PUT", "PATCH"].includes(method.toUpperCase())) {
 if (transformBody) {
-// If our method is POST, PUT or PATCH, and we have to transform our body  to Form Data (for files upload for example)
+// If our method is POST, PUT or PATCH, and we have to transform our body
+
+//to Form Data (for files upload for example)
 // transform body object to form data entries
 let bodyFormData = new FormData();
 for (let [key, value] of Object.entries(body)) {
@@ -49,7 +51,9 @@ headers: { "Content-Type": "multipart/form-data" },
 data: bodyFormData,
 };
 } else {
-// If not keep the content type json and the body will be parsed automatically to json
+// If not keep the content type json and the body will be parsed
+
+//automatically to json
 config = {
 ...config,
 headers: { "Content-Type": "application/json", },
@@ -59,7 +63,8 @@ data: body,
 }
 }
 // Setting authorization token if available with each request
-// This example uses localStorage, feel free to change it to cookie storage or something else.
+// This example uses localStorage, feel free to change it to cookie storage or
+//something else.
 // const token = localStorage.getItem("token");
 // if (token)
 // config.headers = { ...config.headers, Authorization: `Bearer ${token}` }
@@ -70,9 +75,11 @@ const res = await api(config);
 result = res.data;
 } catch (e) {
 // To differentiate between validation errors and response errors,
-// check whether the "errors" key is defined or not in the returned error from this function.
+// check whether the "errors" key is defined or not in the returned error from
+//this function.
 if (e.response) {
-// The request was made and the server responded with a status code that falls out of the range of 2xx
+// The request was made and the server responded with a status code that falls
+//out of the range of 2xx
 error = e.response.data;
 // console.log(e.message);
 // console.log(error);

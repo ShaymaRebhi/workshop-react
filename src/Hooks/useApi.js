@@ -9,17 +9,19 @@ GET
 to FormData | Default false
 */
 export default function useApi(
-    endpoint,
-    body = null,
-    method = "GET",
-    transformBody = false
-    ) {
-    // Create state values
-    // result, error and the body we will send
+endpoint,
+body = null,
+method = "GET",
+transformBody = false
+) {
+// Create state values
+
+// result, error and the body we will send
 const [result, setResult] = useState(null);
 const [error, setError] = useState(null);
 const [bodyUsed, setBodyUsed] = useState(body);
-// query that will call the queryApi function, takes only a new body argument (optional)
+// query that will call the queryApi function, takes only a new body argument
+//(optional)
 async function query(newBody) {
 if (newBody) setBodyUsed(newBody);
 // If the endpoint is empty return an empty value
@@ -44,3 +46,4 @@ query();
 // Deconstruct the hook into result, error and a function that can update the hook
 return [result, error, query];
 }
+

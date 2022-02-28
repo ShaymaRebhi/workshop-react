@@ -1,24 +1,17 @@
 import './App.css';
 import styled from 'styled-components'
+import useApi from './Hooks/useApi';
 import Product from './Component/Product';
-import products from './products.json';
+//import products from './products.json';
+
 
 function App() {
-    const menu = (<div>
-            <ul id="nav">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </div>
-    );
+  const [products,err]=useApi("products");
   return (
      
         <AppFrame className="app">
-        {products.map((product , index)=> (
-          <Product product = {product} key={index}></Product>
-        ))}
+        
+        {products && products.map((object,index)=>( <Product key={index}  product={object} />))}
       </AppFrame>
       
   );

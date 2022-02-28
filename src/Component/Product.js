@@ -33,10 +33,11 @@ export default function Product (props){
             <ProductImageBest src={product.img}></ProductImageBest>
           </ProductImageWrapperBest>
           <ProductInfoWrapperBest>
-          <span>{product.name}</span>
+          <span>{product.title}</span>
           <h4>Best Product !!</h4>
                   <span>{product.price}</span>
-                  <span>Likes : {likes}</span>
+                  <span>{product.description}</span>
+                  <span>Likes : {product.likes}</span>
                   <button onClick={addLike}>Like</button>
           </ProductInfoWrapperBest>
         </ProductFrameBest>
